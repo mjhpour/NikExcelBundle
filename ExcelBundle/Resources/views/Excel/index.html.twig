@@ -1,0 +1,47 @@
+{% extends 'NikExcelBundle::layout.html.twig' %}
+
+{% block nik_excel_content -%}
+    <h1>{{ 'excel.database.list'|trans }}</h1><br>
+
+    <div class="row">
+        <div class="col-xs-12 text-right">
+            {#<div class="btn-group">#}
+                {#<a href="{{ path('hackzilla_ticket_new') }}" class="btn btn-default"><span#}
+                            {#class="glyphicon glyphicon-plus"></span> {{ 'TABLE_NEW'|trans }}</a>#}
+            {#</div>#}
+        </div>
+    </div><br>
+
+    <a href="{{ path('nik_get_excel_import') }}">
+        {{ macros.excel_btn(2, 'IMPORT'|trans, false) }}
+    </a><br><br>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th class="sorted">{{ knp_pagination_sortable(pagination, 'TABLE_NAME'|trans, 't.subject') }}</th>
+            <th class="sorted">{{ knp_pagination_sortable(pagination, 'EXPORT'|trans, 't.userCreated') }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in pagination %}
+            <tr>
+                <td>{{ entity.name }}</td>
+                <td>
+                    <a href="{{ path('nik_excel_export', { 'entityName': entity.fullClassName }) }}">
+                        {{ macros.excel_btn(1, 'EXPORT'|trans, true) }}
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">{{ 'MESSAGE_NO_TICKETS'|trans }}.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation text-right">
+        {{ knp_pagination_render(pagination, 'KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig') }}
+    </div>
+
+{% endblock %}

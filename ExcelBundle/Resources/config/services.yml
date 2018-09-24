@@ -1,0 +1,40 @@
+services:
+
+    nik_excel.storage.file_system_storage:
+        class: Nik\ExcelBundle\Storage\FileSystemStorage
+
+    nik_excel.injector.excel_injector:
+        class: Nik\ExcelBundle\Injector\ExcelInjector
+        arguments: ['@phpexcel']
+
+    nik_excel.adaptor.adaptor:
+        class: Nik\ExcelBundle\Adaptor\Adaptor
+        arguments:
+            - '@nik_excel.injector.excel_injector'
+
+    nik_excel.injector.database_injector:
+        class: Nik\ExcelBundle\Injector\DatabaseInjector
+        arguments:
+            - '@nik_excel.adaptor.adaptor'
+            - '@doctrine.orm.entity_manager'
+            - '@doctrine.dbal.default_connection'
+
+    nik_excel.handler.import_handler:
+        class: Nik\ExcelBundle\Handler\ImportHandler
+        arguments:
+            - '@nik_excel.storage.file_system_storage'
+            - '@nik_excel.injector.database_injector'
+            - '@event_dispatcher'
+            - '@kernel'
+
+    nik_excel.handler.export_handler:
+        class: Nik\ExcelBundle\Handler\ExportHandler
+        arguments:
+            - '@nik_excel.storage.file_system_storage'
+            - '@kernel'
+            - '@nik_excel.injector.database_injector'
+
+    nik_excel.steps_step.query_step:
+        class: Nik\ExcelBundle\Steps\Step\QueryStep
+        arguments:
+            - '@doctrine.orm.entity_manager'

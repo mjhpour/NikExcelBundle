@@ -1,0 +1,16 @@
+{% extends 'NikExcelBundle::layout.html.twig' %}
+
+{% block nik_excel_content -%}
+    <h1>{{ 'LABEL_EXCEL_ATTACHMENT'|trans }}</h1><br>
+
+    {% if form is defined %}
+        <div class="well well-sm">
+                {{ form_start(form, {'method': 'POST', 'action': path('nik_post_excel_import')}) }}
+                {{ form_end(form) }}
+        </div>
+    {% endif %}
+
+    {% if message is defined %}
+        {{ macros.excel_alert(1, message, true) }}
+    {% endif %}
+{% endblock %}

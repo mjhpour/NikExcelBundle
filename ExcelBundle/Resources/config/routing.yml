@@ -1,0 +1,3 @@
+nik_system_excel:
+    resource: "@NikExcelBundle/Resources/config/routing/excel.yml"
+    prefix:   /excel/

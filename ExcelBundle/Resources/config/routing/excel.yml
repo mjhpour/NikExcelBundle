@@ -1,0 +1,18 @@
+nik_excel:
+    path:  /
+    defaults: { _controller: "NikExcelBundle:ExcelIndex:index" }
+
+nik_post_excel_import:
+    path:  /import
+    defaults: { _controller: "NikExcelBundle:ExcelHandler:import" }
+    methods: post
+
+nik_get_excel_import:
+    path:  /import
+    defaults: { _controller: "NikExcelBundle:ExcelHandler:import" }
+    methods: get
+
+nik_excel_export:
+    path:  /export
+    defaults: { _controller: "NikExcelBundle:ExcelHandler:export" }
+    methods: get

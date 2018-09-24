@@ -1,0 +1,12 @@
+download: Download
+Excel: "Excel"
+TABLE_NAME: "Table Name"
+EXPORT: "Export"
+IMPORT: "Import"
+TABLE_NEW: "Create New Table"
+LABEL_EXCEL_ATTACHMENT: "Attache New Excel File"
+excel:
+    database:
+        list: "Database Table List"
+upload:
+    success: "Successfully Upload"

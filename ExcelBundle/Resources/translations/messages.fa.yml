@@ -1,0 +1,15 @@
+download: Download
+Excel: "اکسل"
+TABLE_NAME: "نام جدول"
+EXPORT: "اکسپورت"
+IMPORT: "ایمپورت"
+TABLE_NEW: "ساخت جدول جدید"
+LABEL_EXCEL_ATTACHMENT: "افزودن فایل اکسل"
+excel:
+    database:
+        list: "لیست جداول پایگاه داده"
+upload:
+    success: "آپلود موقفیت آمیز بود"
+not:
+    valid:
+        excelFile: "فایل اکسل معتبر نیست"

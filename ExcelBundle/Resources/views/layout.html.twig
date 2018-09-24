@@ -1,0 +1,6 @@
+{% extends '::base.html.twig' %}
+{% import 'NikExcelBundle:Macros:macros.html.twig' as macros %}
+{% block header %}{% trans %}Excel{% endtrans %}{% endblock %}
+{% block body %}
+    {% block nik_excel_content %}{% endblock %}
+{% endblock body %}
